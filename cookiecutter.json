@@ -1,0 +1,8 @@
+{
+  "app_name": "Factory",
+  "app_slug": "{{ cookiecutter.app_name.lower()|replace(' ', '_')|replace('-', '_') }}",
+  "blueprint_name": "{{ cookiecutter.app_slug}}_bp",
+  "_copy_without_render": [
+    "*.html"
+  ]
+}

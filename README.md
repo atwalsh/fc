@@ -1,0 +1,16 @@
+
+**_factory_** - Flask [app-factory style][2] skeleton generator using [cookiecutter][1].
+```bash
+pip install cookiecutter
+
+cookiecutter https://github.com/atwalsh/factory.git
+```
+
+**To-Do:**
+    
+  - [ ] database dialog (pg/sqlite)
+  - [ ] pip install dialog
+  - [ ] venv dialog
+
+[1]: https://github.com/audreyr/cookiecutter
+[2]: http://flask.pocoo.org/docs/latest/patterns/appfactories/
