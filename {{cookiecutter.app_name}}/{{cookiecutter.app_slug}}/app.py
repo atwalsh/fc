@@ -1,7 +1,7 @@
 from flask import Flask
 
 from {{cookiecutter.app_slug}}.extensions import db, migrate
-from .blueprints import {{cookiecutter.blueprint_name + '_bp'}}
+from .blueprints import {{cookiecutter.blueprint_name}}
 
 
 def create_app(config=None, app_name=None):
@@ -45,5 +45,5 @@ def configure_blueprints(app: Flask):
     """
     Configure blueprints.
     """
-    app.register_blueprint({{cookiecutter.blueprint_name + '_bp'}})
+    app.register_blueprint({{cookiecutter.blueprint_name}})
 
