@@ -1,8 +1,9 @@
 **_factory_** - Flask [app-factory style][2] skeleton generator using [cookiecutter][1].
 
-**Requirements**:
+**Requirements:**
 - [yarn]
 
+**Installation:**
 ```bash
 pip install cookiecutter
 
