@@ -8,7 +8,6 @@ cookiecutter https://github.com/atwalsh/factory.git
 
 **To-Do:**
     
-  - [ ] database dialog (pg/sqlite)
   - [ ] pip install dialog
   - [ ] venv dialog
 
