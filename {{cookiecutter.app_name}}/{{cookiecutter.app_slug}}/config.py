@@ -2,9 +2,9 @@ import os
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
-{%- if cookiecutter.db == "PostgreSQL" -%}
+{% if cookiecutter.db == "PostgreSQL" %}
 postegres_uri_template = 'postgresql://{}:{}@{}:{}/{}'
-{%- endif -%}
+{% endif %}
 
 class Config:
     def __init__(self):
@@ -16,7 +16,7 @@ class DevelopmentConfig(Config):
         super(DevelopmentConfig, self).__init__()
         self.DEBUG = True
         self.ENV = 'development'
-        { % - if cookiecutter.db == "PostgreSQL" - %}
+        {% if cookiecutter.db == "PostgreSQL" %}
         self.SQLALCHEMY_DATABASE_URI = postegres_uri_template.format(
             os.environ['DEV_DB_USERNAME'],
             os.environ['DEV_DB_PASSWORD'],
@@ -24,9 +24,9 @@ class DevelopmentConfig(Config):
             os.environ['DEV_DB_PORT'],
             os.environ['DEV_DB_NAME']
         )
-        { % - elif cookiecutter.db == "SQLite (memory)" - %}
+        {% elif cookiecutter.db == "SQLite (memory)" %}
         self.SQLALCHEMY_DATABASE_URI = 'sqlite://'
-        { % - endif - %}
+        {% endif %}
 
 
 class TestConfig(Config):
@@ -34,7 +34,7 @@ class TestConfig(Config):
         super(TestConfig, self).__init__()
         self.TESTING = True
         self.ENV = 'development'
-        { % - if cookiecutter.db == "PostgreSQL" - %}
+        {% if cookiecutter.db == "PostgreSQL" %}
         self.SQLALCHEMY_DATABASE_URI = postegres_uri_template.format(
             os.environ['TEST_DB_USERNAME'],
             os.environ['TEST_DB_PASSWORD'],
@@ -42,14 +42,14 @@ class TestConfig(Config):
             os.environ['TEST_DB_PORT'],
             os.environ['TEST_DB_NAME']
         )
-        { % - elif cookiecutter.db == "SQLite (memory)" - %}
+        {% elif cookiecutter.db == "SQLite (memory)" %}
         self.SQLALCHEMY_DATABASE_URI = 'sqlite://'
-        { % - endif - %}
+        {% endif %}
 
 class ProductionConfig(Config):
     def __init__(self):
         super(ProductionConfig, self).__init__()
-        { % - if cookiecutter.db == "PostgreSQL" - %}
+        {% if cookiecutter.db == "PostgreSQL" %}
         self.SQLALCHEMY_DATABASE_URI = postegres_uri_template.format(
             os.environ['DB_USERNAME'],
             os.environ['DB_PASSWORD'],
@@ -57,9 +57,9 @@ class ProductionConfig(Config):
             os.environ['DB_PORT'],
             os.environ['DB_NAME']
         )
-        { % - elif cookiecutter.db == "SQLite (memory)" - %}
+        {% elif cookiecutter.db == "SQLite (memory)" %}
         self.SQLALCHEMY_DATABASE_URI = 'sqlite://'
-        { % - endif - %}
+        {% endif %}
 
 def create_config() -> Config:
     if os.getenv('TEST') == '1' or os.getenv('TRAVIS') == 'true':
