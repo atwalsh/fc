@@ -25,7 +25,7 @@ class DevelopmentConfig(Config):
             os.environ['DEV_DB_NAME']
         )
         {% elif cookiecutter.db == "SQLite (memory)" %}
-        self.SQLALCHEMY_DATABASE_URI = 'sqlite://'
+        self.SQLALCHEMY_DATABASE_URI = 'sqlite:///../{{ cookiecutter.app_slug }}.db'
         {% endif %}
 
 
@@ -43,7 +43,7 @@ class TestConfig(Config):
             os.environ['TEST_DB_NAME']
         )
         {% elif cookiecutter.db == "SQLite (memory)" %}
-        self.SQLALCHEMY_DATABASE_URI = 'sqlite://'
+        self.SQLALCHEMY_DATABASE_URI = 'sqlite:///../{{ cookiecutter.app_slug }}.db'
         {% endif %}
 
 class ProductionConfig(Config):
@@ -58,7 +58,7 @@ class ProductionConfig(Config):
             os.environ['DB_NAME']
         )
         {% elif cookiecutter.db == "SQLite (memory)" %}
-        self.SQLALCHEMY_DATABASE_URI = 'sqlite://'
+        self.SQLALCHEMY_DATABASE_URI = 'sqlite:///../{{ cookiecutter.app_slug }}.db'
         {% endif %}
 
 def create_config() -> Config:
