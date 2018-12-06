@@ -28,24 +28,13 @@ class DevelopmentConfig(Config):
         self.SQLALCHEMY_DATABASE_URI = 'sqlite:///../{{ cookiecutter.app_slug }}.db'
         {% endif %}
 
-
-class TestConfig(Config):
+{% if cookiecutter.db == "SQLite (memory)" %}
+class MigrationConfig(DevelopmentConfig):
     def __init__(self):
-        super(TestConfig, self).__init__()
-        self.TESTING = True
-        self.ENV = 'development'
-        {% if cookiecutter.db == "PostgreSQL" %}
-        self.SQLALCHEMY_DATABASE_URI = postegres_uri_template.format(
-            os.environ['TEST_DB_USERNAME'],
-            os.environ['TEST_DB_PASSWORD'],
-            os.environ['TEST_DB_ADDRESS'],
-            os.environ['TEST_DB_PORT'],
-            os.environ['TEST_DB_NAME']
-        )
-        {% elif cookiecutter.db == "SQLite (memory)" %}
-        self.SQLALCHEMY_DATABASE_URI = 'sqlite:///../{{ cookiecutter.app_slug }}.db'
-        {% endif %}
+        super(MigrationConfig, self).__init__()
+        self.SQLALCHEMY_DATABASE_URI = 'sqlite:///{{ cookiecutter.app_slug }}.db'
 
+{% endif %}
 class ProductionConfig(Config):
     def __init__(self):
         super(ProductionConfig, self).__init__()
@@ -62,9 +51,7 @@ class ProductionConfig(Config):
         {% endif %}
 
 def create_config() -> Config:
-    if os.getenv('TEST') == '1' or os.getenv('TRAVIS') == 'true':
-        return TestConfig()
-    elif os.getenv('DEV') == '1':
+    if os.getenv('DEV') == '1':
         return DevelopmentConfig()
     else:
         return ProductionConfig()
