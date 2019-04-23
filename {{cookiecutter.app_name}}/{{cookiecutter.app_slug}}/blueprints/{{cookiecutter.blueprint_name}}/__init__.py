@@ -1,1 +1,0 @@
-from .views import {{cookiecutter.blueprint_name}}
