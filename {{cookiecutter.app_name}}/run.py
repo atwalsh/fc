@@ -1,8 +1,7 @@
-from {{cookiecutter.app_slug}}.config import create_config
+from {{cookiecutter.app_slug}}.config import Config
 from {{cookiecutter.app_slug}}.app import create_app
 
-config = create_config()
-app = create_app(config)
+app = create_app(Config())
 
 if __name__ == '__main__':
     app.run()
