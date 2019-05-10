@@ -4,13 +4,11 @@
 ```bash
 pip install cookiecutter
 
-cookiecutter https://github.com/atwalsh/factory.git
+cookiecutter gh:atwalsh/factory
 ```
 
-**To-Do:**
-    
-  - [ ] pip install dialog
-  - [ ] venv dialog
+**Post-install**
+- Set the `DATABASE_URL` environment variable
 
 [1]: https://github.com/audreyr/cookiecutter
 [2]: http://flask.pocoo.org/docs/latest/patterns/appfactories/
