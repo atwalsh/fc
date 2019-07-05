@@ -1,5 +1,5 @@
 {
-  "app_name": "Factory",
+  "app_name": "FC",
   "app_slug": "{{ cookiecutter.app_name.lower()|replace(' ', '_')|replace('-', '_') }}",
   "blueprint_name": "{{ cookiecutter.app_slug}}_bp",
   "db": [
