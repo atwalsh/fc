@@ -13,3 +13,8 @@ cookiecutter gh:atwalsh/fc
 
 [1]: https://github.com/audreyr/cookiecutter
 [2]: http://flask.pocoo.org/docs/latest/patterns/appfactories/
+
+**Run**
+```
+python run.py
+```
